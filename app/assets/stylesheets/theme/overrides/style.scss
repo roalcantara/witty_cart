@@ -1,0 +1,9 @@
+.form-row > .col,
+.form-row > [class*='col-'] {
+  margin-bottom: 15px;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}

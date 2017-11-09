@@ -8,7 +8,13 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = csrf_meta_tags
 
-  body
-    = yield
+  body.app.header-fixed.sidebar-fixed.aside-menu-fixed.aside-menu-hidden
+    = render 'header'
+    .app-body
+      = render 'sidebar'
+      main.main
+        .container-fluid
+          = yield
 
+    = render 'footer'
     = javascript_include_tag 'application-bottom'

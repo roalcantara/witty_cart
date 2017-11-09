@@ -2,6 +2,14 @@
 @import 'normalize-rails';
 @import 'bootstrap';
 
+// -- Theme --
+@import 'theme/style';
+@import 'theme/overrides/style';
+@import 'theme/overrides/table';
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 // -- Application --
 @import 'utilities';
 

@@ -1,0 +1,21 @@
+.table {
+  .table-actions {
+    white-space: nowrap;
+
+    a {
+      padding-left: 10px;
+
+      :first-child {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+.table-hover {
+  .no-hover {
+    :hover {
+      background-color: inherit;
+    }
+  }
+}
