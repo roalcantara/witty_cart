@@ -23,7 +23,8 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '~> 2.15', '>= 2.15.4'
+  gem 'capybara',         '~> 2.15', '>= 2.15.4'
+  gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
 end
 
 group :development, :test do
