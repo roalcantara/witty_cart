@@ -1,3 +1,13 @@
+if ENV['CI'] == 'true'
+  require 'simplecov'
+
+  SimpleCov.command_name 'RSpec'
+
+  SimpleCov.start 'rails' do
+    minimum_coverage 100
+  end
+end
+
 RSpec.configure do |config|
   config.disable_monkey_patching!
   config.order = :random

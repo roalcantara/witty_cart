@@ -25,6 +25,7 @@ end
 group :test do
   gem 'capybara',         '~> 2.15', '>= 2.15.4'
   gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
+  gem 'simplecov',        '~> 0.15.1', require: false
 end
 
 group :development, :test do
