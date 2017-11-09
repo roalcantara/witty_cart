@@ -5,6 +5,7 @@ gem 'jbuilder',             '~> 2.5'
 gem 'puma',                 '~> 3.7'
 gem 'rails',                '~> 5.1.4'
 gem 'sass-rails',           '~> 5.0'
+gem 'slim-rails',           '~> 3.1', '>= 3.1.3'
 gem 'sqlite3'
 gem 'turbolinks',           '~> 5'
 gem 'uglifier',             '>= 1.3.0'
@@ -12,7 +13,7 @@ gem 'uglifier',             '>= 1.3.0'
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring-watcher-listen',  '~> 2.0.0'
-  gem 'web-console',            '>= 3.3.0'
+  gem 'web-console',            '~> 3.5', '>= 3.5.1'
 end
 
 group :test do
