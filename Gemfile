@@ -27,8 +27,10 @@ group :test do
 end
 
 group :development, :test do
-  gem 'byebug', platforms: %i(mri mingw x64_mingw)
-  gem 'spring', '~> 2.0', '>= 2.0.2'
+  gem 'byebug',                 platforms: %i(mri mingw x64_mingw)
+  gem 'rspec-rails',            '3.5.1'
+  gem 'spring',                 '~> 2.0', '>= 2.0.2'
+  gem 'spring-commands-rspec',  '1.0.4'
 end
 
 gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
