@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap',            '~> 4.0.0.beta2.1'
 gem 'coffee-rails',         '~> 4.2'
 gem 'jbuilder',             '~> 2.5'
+gem 'jquery-rails',         '~> 4.3', '>= 4.3.1'
 gem 'normalize-rails',      '~> 4.1', '>= 4.1.1'
 gem 'puma',                 '~> 3.7'
 gem 'rails',                '~> 5.1.4'
@@ -27,3 +29,7 @@ group :development, :test do
 end
 
 gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-pace', '~> 1.0.2'
+end
