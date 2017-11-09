@@ -12,4 +12,7 @@
 //
 //= require rails-ujs
 //= require turbolinks
+
+window.WittyCart = {};
+
 //= require_tree .
