@@ -7,12 +7,14 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-       - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.4.1-node-browsers
+        environment:
+          RAILS_ENV: test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      - image: circleci/postgres:9.5-alpine
 
     working_directory: ~/repo
 
@@ -36,14 +38,21 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
-
-      # run tests!
-      - run: mkdir ~/rspec
       - run:
-          command: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database Setup
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:schema:load
+
+      - run:
+          name: Run RSpec
+          command: |
+            mkdir ~/rspec
+            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
           when: always
 
       # collect reports
