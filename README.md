@@ -1,4 +1,5 @@
 # Witty Cart
+[![CircleCI](https://circleci.com/gh/roalcantara/witty_cart/tree/master.svg?style=svg)](https://circleci.com/gh/roalcantara/witty_cart/tree/master)
 
 ### Development
 * Node in order to provide a proxy to a external valid https domain
