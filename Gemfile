@@ -23,9 +23,10 @@ group :development do
 end
 
 group :test do
-  gem 'capybara',         '~> 2.15', '>= 2.15.4'
-  gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
-  gem 'simplecov',        '~> 0.15.1', require: false
+  gem 'capybara',               '~> 2.15', '>= 2.15.4'
+  gem 'database_cleaner',       '~> 1.6', '>= 1.6.2'
+  gem 'rspec_junit_formatter',  '~> 0.3.0'
+  gem 'simplecov',              '~> 0.15.1', require: false
 end
 
 group :development, :test do
