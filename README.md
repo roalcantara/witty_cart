@@ -1,5 +1,6 @@
 # Witty Cart
 [![CircleCI](https://circleci.com/gh/roalcantara/witty_cart/tree/master.svg?style=svg)](https://circleci.com/gh/roalcantara/witty_cart/tree/master)
+[![Coverage Status](https://coveralls.io/repos/github/roalcantara/witty_cart/badge.svg?branch=master)](https://coveralls.io/github/roalcantara/witty_cart?branch=master)
 
 ### Development
 * Node in order to provide a proxy to a external valid https domain
