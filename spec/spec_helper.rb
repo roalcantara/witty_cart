@@ -1,11 +1,13 @@
 if ENV['CI'] == 'true'
   require 'simplecov'
+  require 'coveralls'
 
   SimpleCov.command_name 'RSpec'
 
   SimpleCov.start 'rails' do
     minimum_coverage 100
   end
+  Coveralls.wear!
 end
 
 RSpec.configure do |config|
