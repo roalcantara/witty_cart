@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    title = page_title(app_name: 'Witty Cart!')
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
+
+  body.app class="#{body_class}"    
+    = yield :main
+
+    = javascript_include_tag 'application-bottom'
