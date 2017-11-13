@@ -44,4 +44,5 @@ gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-pace', '~> 1.0.2'
+  gem 'rails-assets-toastr', '~> 2.1.3'
 end

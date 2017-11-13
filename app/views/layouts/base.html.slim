@@ -8,7 +8,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = csrf_meta_tags
 
-  body.app class="#{body_class}"    
+  body.app class="#{body_class}"
     = yield :main
 
     = javascript_include_tag 'application-bottom'
+    = javascript_tag yield(:js) if content_for? :js
