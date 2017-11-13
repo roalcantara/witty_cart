@@ -3,6 +3,9 @@
 @import 'bootstrap';
 @import 'toastr';
 
+// -- Plugins Overrides --
+@import 'plugins/overrides/toastr';
+
 // -- Theme --
 @import 'theme/style';
 @import 'theme/overrides/style';

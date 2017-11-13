@@ -1,0 +1,78 @@
+// sass-lint:disable no-ids
+
+#toast-container > div {
+  opacity: .9 !important;
+}
+
+#toast-container > .toast {
+  background-image: none !important;
+
+  &::before {
+    color: $white;
+    float: left;
+    font-family: FontAwesome;
+    font-size: 24px;
+    left: -10px;
+    line-height: 18px;
+    margin-left: -1em;
+    margin-right: 0;
+    padding-right: 0;
+    position: relative;
+  }
+}
+
+#toast-container > .toast-warning {
+  &::before {
+    content: '\f256';
+  }
+}
+
+#toast-container > .toast-error {
+  &::before {
+    content: '\f088';
+  }
+}
+
+#toast-container > .toast-info {
+  &::before {
+    content: '\f0a2';
+  }
+}
+
+#toast-container > .toast-success {
+  &::before {
+    content: '\f087';
+  }
+}
+
+$toast-border: rgba(0, 0, 0, .1);
+$toast-info: #26c6da;
+$toast-warning: #ffa726;
+$toast-error: #ef5350;
+$toast-success: #66bb6a;
+
+.toast {
+  border: 1px solid $toast-border !important;
+}
+
+.toast-message {
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.toast-info {
+  background-color: $toast-info;
+}
+
+.toast-warning {
+  background-color: $toast-warning;
+}
+
+.toast-error {
+  background-color: $toast-error;
+}
+
+.toast-success {
+  background-color: $toast-success;
+}
