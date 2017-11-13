@@ -9,6 +9,7 @@ html
     = csrf_meta_tags
 
   body.app class="#{body_class}"
+    - toasts(*flash.map { |key, value| { message: value, type: key.to_sym } })
     = yield :main
 
     = javascript_include_tag 'application-bottom'
