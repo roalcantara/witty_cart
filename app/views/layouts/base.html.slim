@@ -12,5 +12,4 @@ html
     - toasts(*flash.map { |key, value| { message: value, type: key.to_sym } })
     = yield :main
 
-    = javascript_include_tag 'application-bottom'
     = javascript_tag yield(:js) if content_for? :js
