@@ -26,6 +26,9 @@
     "SENDGRID_USERNAME": {
       "required": true
     },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
     "ENVIRONMENT": "review"
   },
   "formation": {
