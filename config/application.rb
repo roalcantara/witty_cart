@@ -15,4 +15,22 @@ module WittyCart
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
   end
+
+  class << self
+    def canonical_host
+      ENV['CANONICAL_HOST'] || 'localhost:3000'
+    end
+
+    def host
+      [(Rails.env.production? ? 'https://' : 'http://'), canonical_host].join()
+    end
+
+    def env
+      ENV['ENVIRONMENT'] || Rails.env
+    end
+
+    def production?
+      env == 'production'
+    end
+  end
 end
