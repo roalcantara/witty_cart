@@ -1,6 +1,6 @@
 .card
   .card-header
-    | User ##{@user.id}
+    = @user.to_s
   .card-block
     dl.dl-horizontal.margin-top-10.margin-bottom-10
       dt = User.human_attribute_name :email
