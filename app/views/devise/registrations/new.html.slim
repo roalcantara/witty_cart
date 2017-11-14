@@ -7,15 +7,18 @@
         p.text-muted Create your account
         .input-group.mb-2.mr-sm-2.mb-sm-0
           span.input-group-addon @
-          = f.email_field :email, required: true, autofocus: true, class: 'form-control', placeholder: 'Email'
+          = f.email_field :email, required: true, autofocus: true, class: "form-control #{error?(resource, :email)}", placeholder: 'Email'
+        = error resource, :email
         .input-group.mb-2.mr-sm-2.mb-sm-0.mt-3
           span.input-group-addon
             i.icon-lock
-          = f.password_field :password, required: true, class: 'form-control', autocomplete: :off, placeholder: 'Password'
+          = f.password_field :password, required: true, class: "form-control #{error?(resource, :password)}", autocomplete: :off, placeholder: 'Password'
+        = error resource, :password
         .input-group.mb-2.mr-sm-2.mb-sm-0.mt-3
           span.input-group-addon
             i.icon-lock
-          = f.password_field :password_confirmation, required: true, class: 'form-control', autocomplete: :off, placeholder: 'Repeat Password'
+          = f.password_field :password_confirmation, required: true, class: "form-control #{error?(resource, :password_confirmation)}", autocomplete: :off, placeholder: 'Repeat Password'
+        = error resource, :password_confirmation
         button.btn.btn-block.btn-success.mt-3 type="submit" Create Account
     .card-footer.p-4
       .row
