@@ -28,6 +28,7 @@ group :test do
   gem 'capybara',               '~> 2.15', '>= 2.15.4'
   gem 'coveralls',              '~> 0.8.21', require: false
   gem 'database_cleaner',       '~> 1.6', '>= 1.6.2'
+  gem 'ffaker',                 '~> 2.7'
   gem 'rspec_junit_formatter',  '~> 0.3.0'
   gem 'simplecov',              '~> 0.14.1', require: false
 end
