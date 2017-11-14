@@ -7,5 +7,7 @@ RSpec.describe Admin::DashboardController do
     subject! { get :index }
 
     it { expect(response).to have_http_status :success }
+
+    it { expect(response).to render_template :index }
   end
 end
