@@ -1,0 +1,26 @@
+.col-md-8
+  .card-group.mb-0
+    .card.p-4
+      .card-body
+        = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+          h1 Login
+          p.text-muted Sign In to your account
+          .input-group.mb-3
+            span.input-group-addon
+              i.icon-user
+            = f.email_field :email, required: true, autofocus: true, class: 'form-control', placeholder: 'Email'
+          .input-group.mb-4
+            span.input-group-addon
+              i.icon-lock
+            = f.password_field :password, required: true, class: 'form-control', placeholder: 'Password'
+          .row
+            .col-6
+              = f.button :button, 'Login', class: "btn btn-primary px-4"
+            .col-6.text-right
+              = link_to 'Forgot password?', new_password_path(resource_name), class: 'btn btn-link px-0'
+    .card.text-white.bg-primary.py-5.d-md-down-none style="width:44%" 
+      .card-body.text-center
+        div
+          h2 Sign up
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          = link_to 'Register Now!', new_registration_path(resource_name), class: 'btn btn-primary active mt-3'

@@ -1,0 +1,29 @@
+.col-md-6
+  .card.mx-4
+    .card-body.p-4
+      = simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+        = devise_error_messages!
+        h1 Register
+        p.text-muted Create your account
+        .input-group.mb-2.mr-sm-2.mb-sm-0
+          span.input-group-addon @
+          = f.email_field :email, required: true, autofocus: true, class: 'form-control', placeholder: 'Email'
+        .input-group.mb-2.mr-sm-2.mb-sm-0.mt-3
+          span.input-group-addon
+            i.icon-lock
+          = f.password_field :password, required: true, class: 'form-control', autocomplete: :off, placeholder: 'Password'
+        .input-group.mb-2.mr-sm-2.mb-sm-0.mt-3
+          span.input-group-addon
+            i.icon-lock
+          = f.password_field :password_confirmation, required: true, class: 'form-control', autocomplete: :off, placeholder: 'Repeat Password'
+        button.btn.btn-block.btn-success.mt-3 type="submit" Create Account
+    .card-footer.p-4
+      .row
+        .col-6
+          = link_to :back, class: 'btn btn-secondary btn-block' do
+            => fa_icon 'chevron-left', class: 'pull-left'
+            span back
+        .col-6
+          = link_to new_session_path(resource_name), class: 'btn btn-primary btn-block' do
+            => fa_icon 'sign-in', class: 'pull-right'
+            span sign-in
