@@ -18,7 +18,11 @@ module WittyCart
 
   class << self
     def canonical_host
-      ENV['CANONICAL_HOST'] || 'localhost:3000'
+      ENV['CANONICAL_HOST'] || heroku_host || 'localhost:3000'
+    end
+
+    def heroku_host
+      "#{ENV['HEROKU_APP_NAME']}.herokuapp.com" if ENV['HEROKU_APP_NAME'].present?
     end
 
     def host
