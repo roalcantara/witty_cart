@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe HomeController do
+  authenticate :user
+
   describe 'GET #index' do
     subject! { get :index }
 
