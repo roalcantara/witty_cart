@@ -6,4 +6,4 @@
           .float-right
             i.icon-people
           h4.mb-0 = number_with_delimiter(User.count)
-          p Users
+          p = User.pluralized_model_name
