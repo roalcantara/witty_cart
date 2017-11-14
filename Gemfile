@@ -36,6 +36,7 @@ end
 group :development, :test do
   gem 'byebug',                 platforms: %i(mri mingw x64_mingw)
   gem 'dotenv-rails',           '~> 2.2', '>= 2.2.1'
+  gem 'factory_bot',            '~> 4.8', '>= 4.8.2'
   gem 'rspec-rails',            '3.5.1'
   gem 'spring',                 '~> 2.0', '>= 2.0.2'
   gem 'spring-commands-rspec',  '1.0.4'
