@@ -15,6 +15,14 @@
 //= require jquery_ujs
 //= require turbolinks
 
-window.WittyCart = {};
+// -- Plugins --
+//= require popper
+//= require pace
+//= require bootstrap
+//= require toastr
 
-//= require_tree .
+// -- Theme --
+//= require theme/app
+
+// -- Application --
+//= require init

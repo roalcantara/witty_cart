@@ -2,6 +2,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
+require 'support/factory_bot'
 
 # # Configure the shared examples specs folder
 # # https://www.relishapp.com/rspec/rspec-core/docs/example-groups/shared-examples
