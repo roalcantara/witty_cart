@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bootstrap',                '~> 4.0.0.beta2.1'
 gem 'coffee-rails',             '~> 4.2'
+gem 'devise',                   '~> 4.3'
 gem 'flutie',                   '~> 2.0'
 gem 'font-awesome-rails',       '~> 4.7', '>= 4.7.0.2'
 gem 'jbuilder',                 '~> 2.5'
