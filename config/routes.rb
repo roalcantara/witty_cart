@@ -7,9 +7,12 @@ Rails.application.routes.draw do
 
   authenticate :user, lambda { |u| u.admin? } do
     root "admin/dashboard#index"
+
     namespace :admin do
       root 'dashboard#index'
       get 'dashboard/index'
+
+      resources :users, only: %i(index show)
     end
   end
 end

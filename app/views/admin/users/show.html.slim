@@ -1,0 +1,13 @@
+.card
+  .card-header
+    | User ##{@user.id}
+  .card-block
+    dl.dl-horizontal.margin-top-10.margin-bottom-10
+      dt = User.human_attribute_name :email
+      dd = @user.email
+      dt = User.human_attribute_name :admin
+      dd = @user.admin
+      dt = User.human_attribute_name :created_at
+      dd = @user.created_at
+      dt = User.human_attribute_name :updated_at
+      dd = @user.updated_at
