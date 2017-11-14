@@ -4,4 +4,8 @@
       li.nav-item
         = link_to root_path, class: 'nav-link' do
           i.icon-speedometer
-          | Home
+          | Dashboard
+      li.nav-item
+        = link_to admin_users_path, class: 'nav-link' do
+          i.icon-people
+          = User.pluralized_model_name
