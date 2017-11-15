@@ -1,0 +1,10 @@
+en:
+  models_and_attributes: &models_and_attributes
+    models:
+      user:
+        one: User
+        other: Users
+  activerecord:
+    <<: *models_and_attributes
+  activemodel:
+    <<: *models_and_attributes

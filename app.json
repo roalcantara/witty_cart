@@ -5,6 +5,9 @@
     "LANG": {
       "required": true
     },
+    "ADMIN_PASSWORD": {
+      "required": true
+    },
     "RACK_ENV": {
       "required": true
     },

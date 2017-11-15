@@ -1,8 +1,8 @@
-- content_for :extra_body_classes, 'header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden'
+- content_for :extra_body_classes, "header-fixed #{'sidebar-fixed aside-menu-fixed aside-menu-hidden' if current_user.admin?}"
 - content_for :main do
   = render 'header'
   .app-body
-    = render 'sidebar'
+    = render 'sidebar' if current_user.admin?
     main.main
       .container-fluid
         = yield
