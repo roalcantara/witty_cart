@@ -4,6 +4,7 @@
   .app-body
     = render 'sidebar' if current_user.admin?
     main.main
+      = render 'breadcrumb'
       .container-fluid
         = yield
   = render 'footer'

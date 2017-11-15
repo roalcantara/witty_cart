@@ -1,0 +1,4 @@
+ol.breadcrumb
+  - breadcrumbs.each do |bread|
+    li.breadcrumb-item class="#{'active' if bread == breadcrumbs.last}"
+      = breadcrumb(bread, last: bread == breadcrumbs.last)
