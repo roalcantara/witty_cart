@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'dashboard/index'
 
       resources :users, only: %i(index show)
+      resources :products
     end
   end
 end

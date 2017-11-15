@@ -4,6 +4,9 @@ en:
       user:
         one: User
         other: Users
+      product:
+        one: Product
+        other: Products
   activerecord:
     <<: *models_and_attributes
   activemodel:
