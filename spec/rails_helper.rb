@@ -15,4 +15,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.render_views
   config.include ActiveSupport::Testing::TimeHelpers
+
+  # enables url_helpers for specs
+  config.include Rails.application.routes.url_helpers
 end
