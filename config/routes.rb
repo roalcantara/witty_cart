@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticate :user, lambda { |u| !u.admin? } do
-    root 'home#index'
+    root 'products#index'
+
+    resources :products, only: %i(index show)
   end
 
   authenticate :user, lambda { |u| u.admin? } do
@@ -10,8 +12,8 @@ Rails.application.routes.draw do
 
     namespace :admin do
       root 'dashboard#index'
-      get 'dashboard/index'
 
+      resources :dashboard, only: %i(index)
       resources :users, only: %i(index show)
       resources :products
     end
