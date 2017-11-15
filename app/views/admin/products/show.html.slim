@@ -1,0 +1,18 @@
+.card
+  .card-header
+    = @product.to_s
+    .card-actions
+      = link_to [:edit, :admin, @product], title: 'Edit' do
+        = fa_icon :edit, size: :lg
+      = link_to [:admin, @product], title: 'Delete', data: { confirm: 'Are you sure?' }, method: :delete do
+        = fa_icon :trash, size: :lg    
+  .card-block
+    dl.dl-horizontal.margin-top-10.margin-bottom-10
+      dt = Product.human_attribute_name :name
+      dd = @product.name
+      dt = Product.human_attribute_name :price
+      dd = @product.price
+      dt = Product.human_attribute_name :created_at
+      dd = @product.created_at
+      dt = Product.human_attribute_name :updated_at
+      dd = @product.updated_at

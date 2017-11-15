@@ -1,0 +1,33 @@
+.card.card-inverse
+  .card-header
+    = Product.pluralized_model_name
+  .card-body
+    table.table.table-condensed.table-striped.table-hover.table-bordered
+      thead.thead-default
+        tr
+          th.width-40 #
+          th Name
+          th Price
+          th Created At
+          th.width-65
+      tbody
+        - if @products.count > 0
+          - @products.each do |product|
+            tr
+              td = product.id
+              td = product.name
+              td = product.price
+              td = product.created_at
+              td.table-actions.right
+                = link_to [:admin, product], title: 'Show' do
+                  = fa_icon :eye, size: :lg
+
+                = link_to [:edit, :admin, product], title: 'Edit' do
+                  = fa_icon :edit, size: :lg
+
+                = link_to [:admin, product], title: 'Delete', data: { confirm: 'Are you sure?' }, method: :delete do
+                  = fa_icon :trash, size: :lg
+  .card-footer
+    = link_to new_admin_product_path, class: 'btn btn-primary pull-right' do
+      => fa_icon 'plus-circle', size: :lg
+      | New Product

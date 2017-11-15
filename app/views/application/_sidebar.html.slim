@@ -9,3 +9,7 @@
         = link_to admin_users_path, class: 'nav-link' do
           i.icon-people
           = User.pluralized_model_name
+      li.nav-item
+        = link_to admin_products_path, class: 'nav-link' do
+          i.icon-game-controller
+          = Product.pluralized_model_name
