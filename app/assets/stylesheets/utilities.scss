@@ -1,0 +1,5 @@
+@for $i from 0 through 200 {
+  .width-#{$i} {
+    width: #{$i}px !important;
+  }
+}
