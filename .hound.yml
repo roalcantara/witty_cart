@@ -1,0 +1,19 @@
+ruby:
+  enabled: true
+  config_file: .rubocop.yml
+
+scss:
+  enabled: true
+  config_file: .scss-lint.yml
+
+sass-lint:
+  enabled: true
+  config_file: .sass-lint.yml
+
+coffeescript:
+  enabled: true
+
+jshint:
+  enabled: false
+
+fail_on_violations: true
