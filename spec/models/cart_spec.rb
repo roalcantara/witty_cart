@@ -132,7 +132,7 @@ RSpec.describe Cart do
 
       context 'when the current day is BEFORE than expires_at' do
         it do
-          travel_to(cart.expires_at - 1) do
+          travel_to(cart.expires_at - 2) do
             is_expected.to_not be_expired
           end
         end
