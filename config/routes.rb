@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
       resources :dashboard, only: %i(index)
       resources :users, only: %i(index show)
+      resources :carts, only: %i(index show)
       resources :products
     end
   end
