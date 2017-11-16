@@ -53,4 +53,48 @@ RSpec.describe Cart do
       end
     end
   end
+
+  describe '#differs' do
+    let(:cart) { create :cart, :with_items, items_count: 3 }
+    let(:cart_item_0) { cart.items[0] }
+    let(:cart_item_0_new_price) { Money.new(cart_item_0.item.price.to_f - 2.99, cart_item_0.total_price_currency).to_f }
+    let(:cart_item_1) { cart.items[1] }
+    let(:cart_item_2) { cart.items[2] }
+    let(:cart_item_2_new_price) { Money.new(cart_item_2.item.price.to_f - 2.99, cart_item_2.total_price_currency).to_f }
+
+    before do
+      cart_item_0.item.update_attribute(:price, cart_item_0_new_price)
+      cart_item_2.item.update_attribute(:price, cart_item_2_new_price)
+    end
+
+    subject! { cart.differs }
+
+    it 'returns the products that have their prices changed' do
+      is_expected.to include cart_item_0, cart_item_2
+    end
+
+    it 'does not return products that haven`t had their prices changed' do
+      is_expected.to_not include cart_item_1
+    end
+  end
+
+  describe '#fix_differs!' do
+    let(:cart) { create :cart, :with_items, items_count: 3 }
+    let(:cart_item_0) { cart.items[0] }
+    let(:cart_item_0_new_price) { Money.new(cart_item_0.item.price.to_f - 2.99, cart_item_0.total_price_currency).to_f }
+    let(:cart_item_1) { cart.items[1] }
+    let(:cart_item_2) { cart.items[2] }
+    let(:cart_item_2_new_price) { Money.new(cart_item_2.item.price.to_f - 2.99, cart_item_2.total_price_currency).to_f }
+
+    before do
+      cart_item_0.item.update_attribute(:price, cart_item_0_new_price)
+      cart_item_2.item.update_attribute(:price, cart_item_2_new_price)
+    end
+
+    subject! { cart.fix_differs! }
+
+    it 'updates the cart items setting the new item price' do
+      expect(cart.differs).to be_empty
+    end
+  end
 end

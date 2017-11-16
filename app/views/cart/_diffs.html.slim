@@ -1,0 +1,28 @@
+.modal.price-changed.fade aria-hidden="true" data-backdrop="" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" 
+  .modal-dialog.modal-warning role="document" 
+    .modal-content
+      .modal-header
+        h4.modal-title Ooops!
+      .modal-body
+        h6 Since you were away some prices have been updated..
+        table.table.table-condensed.table-striped.table-hover.table-bordered.my-4.font-xs
+          thead.text-dark.bg-warning
+            tr
+              th.width-40 #
+              th Name
+              th.text-right.width-90 Then
+              th.text-right.width-90 Now
+          tbody
+            - current_user.cart.differs.each.with_index(1) do |cart_item, index|
+              tr
+                td ##{index}
+                td = cart_item.item.name
+                td.text-right = humanized_money_with_symbol(cart_item.unit_price)
+                td.text-right
+                  strong = humanized_money_with_symbol(cart_item.item.price)
+
+        h6 But fear not!
+        p Your WittyCart will be updated to reflect the new prices. Check it out! ;)
+      .modal-footer
+        = link_to fix_diffs_cart_index_path, method: :put, class: 'btn btn-warning' do
+          = fa_icon 'thumbs-o-up lg'

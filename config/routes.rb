@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       collection do
         resources :items, controller: :cart_items, only: %i(create destroy)
         post :checkout
+        put :fix_diffs
       end
     end    
   end

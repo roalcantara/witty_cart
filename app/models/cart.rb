@@ -15,6 +15,14 @@ class Cart < ApplicationRecord
     items.sum :quantity
   end
 
+  def differs
+    items.find_all { |i| i.persisted? && i.unit_price != i.item.price }
+  end
+
+  def fix_differs!
+    differs.each(&:update_price!)
+  end
+
   private
 
   def set_price
