@@ -6,7 +6,15 @@ class User < ApplicationRecord
 
   has_one :cart, foreign_key: :owner_id
 
+  after_save :create_cart!, if: -> { cart.nil? }, unless: -> { admin? }
+
   def username
     email.split('@').first
+  end
+
+  private
+
+  def create_cart!
+    build_cart.save
   end
 end
