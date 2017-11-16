@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe CartController do
   authenticate :user
 
+  it { expect(CartController.ancestors).to include CartExpirable }
+
   let!(:cart) { @current_user.cart }
 
   describe 'GET #index' do

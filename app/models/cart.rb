@@ -23,6 +23,18 @@ class Cart < ApplicationRecord
     differs.each(&:update_price!)
   end
 
+  def expires_at
+    (updated_at || created_at) + 2.days
+  end
+
+  def expired?
+    items.find_all(&:persisted?).any? && Date.current > expires_at
+  end
+
+  def expire!
+    items.destroy_all
+  end
+
   private
 
   def set_price

@@ -80,13 +80,28 @@ RSpec.describe ToastHelper do
       let(:message) do
         {
           message: "This can't be right!",
-          type: :notice,
+          type: :error,
           title: 'A "title"',
           options: '{ "some": options }'
         }
       end
 
       it 'replaces the single-quote with "`"' do
+        is_expected.to eq "toastr.error('This can`t be right!', 'A \"title\"', { \"some\": options });"
+      end
+    end
+
+    context 'when an unknown type is given' do
+      let(:message) do
+        {
+          message: "This can't be right!",
+          type: :unknown,
+          title: 'A "title"',
+          options: '{ "some": options }'
+        }
+      end
+
+      it 'assumes the `info` as default' do
         is_expected.to eq "toastr.info('This can`t be right!', 'A \"title\"', { \"some\": options });"
       end
     end

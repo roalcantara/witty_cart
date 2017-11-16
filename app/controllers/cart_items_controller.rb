@@ -1,4 +1,6 @@
 class CartItemsController < ApplicationController
+  include CartExpirable
+
   before_action :set_cart
   before_action :set_cart_item, only: %i(destroy)
   before_action :add_breadcrumbs

@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe CartItemsController do
   authenticate :user
 
+  it { expect(CartController.ancestors).to include CartExpirable }
+
   let!(:cart) { @current_user.cart }
   let!(:product) { create :product }
   let!(:cart_item) { create :cart_item, cart_id: cart.id }

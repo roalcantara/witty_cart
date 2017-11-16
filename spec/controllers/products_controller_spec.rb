@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe ProductsController do
   authenticate :user
 
+  it { expect(ProductsController.ancestors).to include CartExpirable }
+
   let!(:product) { create :product }
 
   describe 'GET #index' do

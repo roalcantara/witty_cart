@@ -4,3 +4,7 @@ li.nav-item.d-md-down-none
     span.badge.badge-pill.badge-danger = current_user.cart.quantity_of_products
 
   = render 'cart/diffs' if current_user.cart.differs.any?
+
+  - if flash[:cart_expired]
+    - content_for :js do
+      | Turbolinks.clearCache();

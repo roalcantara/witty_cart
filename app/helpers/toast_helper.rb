@@ -22,8 +22,9 @@ module ToastHelper
     end
   end
 
-  def toastr(message, type: :info, title: nil, options: nil)
-    "toastr.#{TYPES[type]}('#{message&.tr("'", '`')}', '#{title&.tr("'", '`')}', #{options || DEFAULT_OPTIONS});"
+  def toastr(message, type: :notice, title: nil, options: nil)
+    toast_type = TYPES[type] || :info
+    "toastr.#{toast_type}('#{message&.tr("'", '`')}', '#{title&.tr("'", '`')}', #{options || DEFAULT_OPTIONS});"
       .html_safe
   end
 end
