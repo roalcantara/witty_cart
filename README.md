@@ -22,7 +22,6 @@ A really Simple Rails 5 Cart App. :)
 1. `$ bundle exec rake spec` to run the specs.
 2. 100% code coverage! YAY
 
-
 ## References
 
 1. [Github Project](https://github.com/roalcantara/witty_cart/projects/1) (Kanban)
@@ -35,6 +34,7 @@ A really Simple Rails 5 Cart App. :)
 7. [Slim](http://slim-lang.com/) (View Templates)
 8. [Money Rails](https://github.com/RubyMoney/money-rails) (Currency Helpers)
 9. [Devise](https://github.com/plataformatec/devise) (Authentication)
+10. [Hound](https://houndci.com) Style Violation Checker
 
 ### Tests
 
