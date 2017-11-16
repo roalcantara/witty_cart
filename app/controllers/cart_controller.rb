@@ -1,4 +1,6 @@
 class CartController < ApplicationController
+  include CartExpirable
+
   before_action :set_cart, only: %i(index checkout fix_diffs)
   before_action :add_breadcrumbs
 

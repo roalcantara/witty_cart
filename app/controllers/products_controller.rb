@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  include CartExpirable
+
   before_action :set_product, only: %i(show)
   before_action :set_cart_item, only: %i(show)
   before_action :add_breadcrumbs

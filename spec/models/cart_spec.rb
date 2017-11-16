@@ -97,4 +97,68 @@ RSpec.describe Cart do
       expect(cart.differs).to be_empty
     end
   end
+
+  describe '#expires_at' do
+    let(:cart) { create :cart }
+
+    context 'when the cart has never been updated' do
+      subject! { cart.expires_at }
+
+      it 'returns the created day + 2 days' do
+        is_expected.to eq cart.created_at + 2.days
+      end
+    end
+
+    context 'when the cart has already been updated' do
+      before { cart.touch }
+
+      subject! { cart.expires_at }
+
+      it 'returns the updated day + 2 days' do
+        is_expected.to eq cart.updated_at + 2.days
+      end
+    end
+  end
+
+  describe '#expired?' do
+    subject(:cart) { create :cart }
+
+    context 'when the cart has no items' do
+      it { is_expected.to_not be_expired }
+    end
+
+    context 'when the cart has items' do
+      before { create :cart_item, cart_id: cart.id }
+
+      context 'when the current day is BEFORE than expires_at' do
+        it do
+          travel_to(cart.expires_at - 1) do
+            is_expected.to_not be_expired
+          end
+        end
+      end
+
+      context 'when the current day is AFTER than expires_at' do
+        it do
+          travel_to((cart.expires_at + 2.days)) do
+            is_expected.to be_expired
+          end
+        end
+      end
+    end
+  end
+
+  describe '#expire!' do
+    let(:cart) { create :cart }
+
+    context 'when the cart has items' do
+      before { create :cart_item, cart_id: cart.id }
+
+      it do
+        expect do
+          cart.expire!
+        end.to change(cart.items, :count).to(0)
+      end
+    end
+  end
 end
