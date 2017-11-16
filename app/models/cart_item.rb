@@ -13,6 +13,11 @@ class CartItem < ApplicationRecord
 
   before_save :set_price
 
+  def update_price!
+    set_price
+    save!
+  end
+
   private
 
   def set_price

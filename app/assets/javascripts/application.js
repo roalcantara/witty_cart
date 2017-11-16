@@ -26,3 +26,4 @@
 
 // -- Application --
 //= require init
+//= require cart

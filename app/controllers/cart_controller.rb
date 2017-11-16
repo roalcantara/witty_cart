@@ -1,5 +1,5 @@
 class CartController < ApplicationController
-  before_action :set_cart, only: %i(index checkout)
+  before_action :set_cart, only: %i(index checkout fix_diffs)
   before_action :add_breadcrumbs
 
   def index; end
@@ -8,6 +8,12 @@ class CartController < ApplicationController
     @cart.items.destroy_all
 
     respond_with @cart, location: cart_index_path, notice: 'Fantabolastic Thanks! 🖖🏼'
+  end
+
+  def fix_diffs
+    @cart.fix_differs!
+
+    respond_with @cart, location: cart_index_path, notice: 'Your WittyCart has been updated! Check it out! 🤗'
   end
 
   private
