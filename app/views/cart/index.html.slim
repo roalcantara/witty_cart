@@ -40,3 +40,7 @@
                 td.text-center
                   = link_to item_path(cart_item), title: 'Delete', data: { confirm: 'Are you sure?' }, method: :delete do
                     = fa_icon :trash, size: :lg
+
+        = link_to checkout_cart_index_path, title: 'Checkout', data: { confirm: 'Are you sure?' }, method: :post, class: "btn btn-lg btn-success pull-right #{ 'disabled' if @cart.items.empty? }", disable: @cart.items.empty? do
+          => fa_icon 'shopping-cart'
+          | Checkout

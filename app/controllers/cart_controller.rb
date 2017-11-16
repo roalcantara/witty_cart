@@ -4,6 +4,12 @@ class CartController < ApplicationController
 
   def index; end
 
+  def checkout
+    @cart.items.destroy_all
+
+    respond_with @cart, location: cart_index_path, notice: 'Fantabolastic Thanks! 🖖🏼'
+  end
+
   private
 
   def set_cart

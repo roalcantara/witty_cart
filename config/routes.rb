@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :cart, only: :index do
       collection do
         resources :items, controller: :cart_items, only: %i(create destroy)
+        post :checkout
       end
     end    
   end
