@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i(show)
+  before_action :set_cart_item, only: %i(show)
   before_action :add_breadcrumbs
 
   def index
@@ -16,6 +17,10 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find params[:id]
+  end
+
+  def set_cart_item
+    @cart_item = current_user.cart.items.build(item_id: @product.id)
   end
 
   def add_breadcrumbs

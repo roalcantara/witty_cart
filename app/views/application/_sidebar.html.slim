@@ -13,3 +13,7 @@
         = link_to admin_products_path, class: 'nav-link' do
           i.icon-game-controller
           = Product.pluralized_model_name
+      li.nav-item
+        = link_to admin_carts_path, class: 'nav-link' do
+          i.icon-basket-loaded
+          = Cart.pluralized_model_name
