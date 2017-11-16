@@ -1,0 +1,10 @@
+.card
+  .card-body
+    = simple_form_for(@cart_item, url: items_path, method: :post) do |f|
+      = f.input :item_id, as: :hidden
+      .row
+        .col-md-6
+          = f.input :quantity, autofocus: true, required: true, collection: 1..100, selected: 1 
+        .col-md-6.text-right.text-danger.h5
+          = humanized_money_with_symbol @product.price
+      button.btn.btn-block.btn-lg.btn-warning.mt-3 type="submit" Add to Cart

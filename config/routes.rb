@@ -5,6 +5,12 @@ Rails.application.routes.draw do
     root 'products#index'
 
     resources :products, only: %i(index show)
+
+    resources :cart, only: :index do
+      collection do
+        resources :items, controller: :cart_items, only: %i(create destroy)
+      end
+    end    
   end
 
   authenticate :user, lambda { |u| u.admin? } do

@@ -3,6 +3,11 @@ header.app-header.navbar
     button.navbar-toggler.mobile-sidebar-toggler.d-lg-none.mr-auto type='button'  ☰
   a.navbar-brand href='#'
   .nav.navbar-nav.ml-auto class="#{'mr-sm-3' unless current_user.admin?}"
+    - unless current_user.admin?
+      li.nav-item.d-md-down-none
+        = link_to cart_index_path, class: 'nav-link'
+          i.icon-basket.fa-3x
+          span.badge.badge-pill.badge-danger = current_user.cart.quantity_of_products
     li.nav-item.dropdown
       a.nav-link.dropdown-toggle.nav-link aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
         = fa_icon 'user-circle 3x', class: 'img-avatar'
