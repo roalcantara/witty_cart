@@ -22,8 +22,9 @@
 //= require toastr
 
 // -- Theme --
+//= require init
 //= require theme/app
 
 // -- Application --
-//= require init
 //= require cart
+//= require tables

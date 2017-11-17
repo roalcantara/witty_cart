@@ -1,16 +1,15 @@
-// -- Plugins --
-@import 'normalize-rails';
-@import 'bootstrap';
-@import 'toastr';
-
-// -- Plugins Overrides --
-@import 'plugins/overrides/toastr';
-
 // -- Theme --
 @import 'theme/style';
 @import 'theme/overrides/style';
 @import 'theme/overrides/table';
 @import 'theme/overrides/forms';
+
+// -- Plugins --
+@import 'normalize-rails';
+@import 'toastr';
+
+// -- Plugins Overrides --
+@import 'plugins/overrides/toastr';
 
 // Fonts
 @import 'font-awesome';

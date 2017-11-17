@@ -4,20 +4,21 @@
       .card-header
         = @cart
       .card-body
-        table.table.table-condensed.table-striped.table-hover.table-bordered
-          thead.thead-default
+        table.table.table-condensed.table-striped.table-hover.table-bordered.table-sm
+          thead
             tr
-              th.width-40 #
+              th.width-40.text-center.d-none.d-lg-table-cell #
               th Name
               th.text-right.width-90 Unit Price
-              th.text-center Quantity
-              th.text-right.width-90 Total Price
-              th.width-100.text-center Created At
+              th.text-center Qtd
+              th.text-right.width-90 Price
+              th.width-100.text-center.d-none.d-sm-none.d-md-table-cell Created At
               th.width-40
           tfoot
             - if @cart.items.any?
               tr
-                td colspan="3"
+                td.d-none.d-lg-table-cell
+                td colspan="2"
                 td.text-center
                   strong
                     = @cart.quantity_of_products
@@ -31,16 +32,20 @@
           tbody
             - @cart.items.each.with_index(1) do |cart_item, index|
               tr
-                td ##{index}
+                td.text-center.d-none.d-lg-table-cell ##{index}
                 td = cart_item.item.name
                 td.text-right = humanized_money_with_symbol(cart_item.unit_price)
                 td.text-center = cart_item.quantity
                 td.text-right = humanized_money_with_symbol(cart_item.total_price)
-                td.text-center = l cart_item.created_at, format: :short
+                td.text-center.d-none.d-sm-none.d-md-table-cell = l cart_item.created_at, format: :short
                 td.text-center
                   = link_to item_path(cart_item), title: 'Delete', data: { confirm: 'Are you sure?' }, method: :delete do
-                    = fa_icon :trash, size: :lg
+                    = fa_icon 'trash lg'
 
-        = link_to checkout_cart_index_path, title: 'Checkout', data: { confirm: 'Are you sure?' }, method: :post, class: "btn btn-lg btn-success pull-right #{ 'disabled' if @cart.items.empty? }", disable: @cart.items.empty? do
+        = link_to checkout_cart_index_path, title: 'Checkout', data: { confirm: 'Are you sure?' }, method: :post, class: "btn btn-lg btn-success pull-right d-none d-lg-block #{ 'disabled' if @cart.items.empty? }", disable: @cart.items.empty? do
+          => fa_icon 'shopping-cart'
+          | Checkout
+
+        = link_to checkout_cart_index_path, title: 'Checkout', data: { confirm: 'Are you sure?' }, method: :post, class: "btn btn-lg btn-success btn-block d-md-none #{ 'disabled' if @cart.items.empty? }", disable: @cart.items.empty? do
           => fa_icon 'shopping-cart'
           | Checkout
