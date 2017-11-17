@@ -21,7 +21,7 @@ RSpec.describe CartItemsController do
 
     context 'with valid params' do
       it { is_expected.to have_http_status :found }
-      it { is_expected.to redirect_to cart_index_path }
+      it { is_expected.to redirect_to products_path }
 
       it 'assigns the current_user`s cart as @cart' do
         expect(assigns(:cart)).to eq cart
@@ -29,10 +29,10 @@ RSpec.describe CartItemsController do
     end
 
     context 'with invalid params' do
-      let(:attributes) { attributes_for(:cart_item, item_id: nil) }
+      let(:attributes) { attributes_for(:cart_item, item_id: product.id, quantity: nil) }
 
-      it { is_expected.to have_http_status :found }
-      it { is_expected.to redirect_to cart_index_path }
+      it { is_expected.to have_http_status :ok }
+      it { is_expected.to render_template 'products/show' }
 
       it 'assigns the current_user`s cart as @cart' do
         expect(assigns(:cart)).to eq cart

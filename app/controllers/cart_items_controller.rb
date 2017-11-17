@@ -3,12 +3,17 @@ class CartItemsController < ApplicationController
 
   before_action :set_cart
   before_action :set_cart_item, only: %i(destroy)
+  before_action :set_product, only: %i(create)
   before_action :add_breadcrumbs
 
   def create
-    @cart.items.create(cart_item_params)
+    @cart_item = @cart.items.create(cart_item_params)
 
-    redirect_to cart_index_path, notice: 'An item has been added! YAY!'
+    if @cart_item.errors.any?
+      render 'products/show'
+    else
+      redirect_to products_path, notice: 'An item has been added! YAY!'
+    end
   end
 
   def destroy
@@ -27,11 +32,20 @@ class CartItemsController < ApplicationController
     @cart = current_user.cart
   end
 
+  def set_product
+    @product = Product.find params[:cart_item][:item_id]
+  end
+
   def set_cart_item
     @cart_item = @cart.items.find params[:id]
   end
 
   def add_breadcrumbs
-    add_breadcrumb Cart.model_name.human
+    if params[:action] == 'create'
+      add_breadcrumb Product
+      add_breadcrumb @product.to_s if @product
+    else
+      add_breadcrumb Cart.model_name.human
+    end
   end
 end
