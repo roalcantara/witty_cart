@@ -1,30 +1,29 @@
-.animated.fadeIn
-  .row
-    .col-sm-6.col-lg-3
-      .card.text-white.bg-primary
-        .card-body.pb-0
-          .float-right
-            i.icon-people
-          h4.mb-0 = number_with_delimiter(User.count)
-          p = User.pluralized_model_name
-    .col-sm-6.col-lg-3
-      .card.text-white.bg-warning
-        .card-body.pb-0
-          .float-right
-            i.icon-game-controller
-          h4.mb-0 = number_with_delimiter(Product.count)
-          p Products available
-    .col-sm-6.col-lg-3
-      .card.text-white.bg-info
-        .card-body.pb-0
-          .float-right
-            i.icon-basket-loaded
-          h4.mb-0 = number_with_delimiter(CartSystem.total_of_products)
-          p Products in Carts
-    .col-sm-6.col-lg-3
-      .card.text-white.bg-danger
-        .card-body.pb-0
-          .float-right
-            i.icon-credit-card
-          h4.mb-0 = humanized_money_with_symbol(CartSystem.total_pending)
-          p Pending Amount Money
+.row
+  .col-sm-6.col-lg-3
+    .card.text-white.bg-primary
+      .card-body.pb-0
+        .float-right
+          i.icon-people
+        h4.mb-0 = number_with_delimiter(User.count)
+        p = User.pluralized_model_name
+  .col-sm-6.col-lg-3
+    .card.text-white.bg-warning
+      .card-body.pb-0
+        .float-right
+          i.icon-game-controller
+        h4.mb-0 = number_with_delimiter(Product.count)
+        p Products available
+  .col-sm-6.col-lg-3
+    .card.text-white.bg-info
+      .card-body.pb-0
+        .float-right
+          i.icon-basket-loaded
+        h4.mb-0 = number_with_delimiter(CartSystem.total_of_products)
+        p Products in Carts
+  .col-sm-6.col-lg-3
+    .card.text-white.bg-danger
+      .card-body.pb-0
+        .float-right
+          i.icon-credit-card
+        h4.mb-0 = humanized_money_with_symbol(CartSystem.total_pending)
+        p Pending Amount Money
