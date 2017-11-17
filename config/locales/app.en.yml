@@ -7,6 +7,9 @@ en:
       product:
         one: Product
         other: Products
+      cart:
+        one: Cart
+        other: Carts
   activerecord:
     <<: *models_and_attributes
   activemodel:
