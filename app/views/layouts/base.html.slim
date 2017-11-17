@@ -7,6 +7,7 @@ html
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = render 'application/integrations' if WittyCart.production?    
     = csrf_meta_tags
 
   body.app class="#{body_class}"

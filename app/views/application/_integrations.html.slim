@@ -1,0 +1,6 @@
+javascript:
+  var userData = #{ current_user&.to_json&.html_safe || 'null' };
+  if(userData) {
+    woopra.identify(userData);
+  }
+  woopra.track();
