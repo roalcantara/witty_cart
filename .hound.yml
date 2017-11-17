@@ -9,6 +9,8 @@ scss:
 sass-lint:
   enabled: true
   config_file: .sass-lint.yml
+  exclude:
+    - 'app/assets/stylesheets/theme/**'
 
 coffeescript:
   enabled: true
