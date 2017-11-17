@@ -52,6 +52,7 @@ module Admin
     def add_breadcrumbs
       add_breadcrumb Product
       add_breadcrumb @product.to_s if @product
+      add_breadcrumb 'New Product' if %w(new create).include?(params[:action])
     end
   end
 end
