@@ -2,22 +2,22 @@
   .card-header
     = User.pluralized_model_name
   .card-body
-    table.table.table-condensed.table-striped.table-hover.table-bordered
-      thead.thead-default
-        tr
-          th.width-40 #
-          th Email
-          th Admin
-          th Created At
-          th.width-65
-      tbody
-        - if @users.count > 0
-          - @users.each do |user|
-            tr
+    .table-responsive
+      table.table.table-condensed.table-striped.table-hover.table-bordered
+        thead.thead-default
+          tr
+            th.width-30 #
+            th Email
+            th Admin
+            th.d-none.d-lg-table-cell Created At
+            th.width-20.d-none.d-lg-table-cell
+        tbody
+          - @users&.each do |user|
+            tr data-href="#{url_for([:admin, user])}"
               td = user.id
               td = user.email
               td = user.admin
-              td = user.created_at
-              td.table-actions.right
+              td.d-none.d-lg-table-cell = l user.created_at, format: :short
+              td.d-none.d-lg-table-cell
                 = link_to [:admin, user] do
                   = fa_icon :edit, size: :lg
