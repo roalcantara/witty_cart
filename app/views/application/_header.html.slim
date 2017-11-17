@@ -2,7 +2,11 @@ header.app-header.navbar
   - if current_user.admin?
     button.navbar-toggler.mobile-sidebar-toggler.d-lg-none.mr-auto type='button'  ☰
   a.navbar-brand href='#'
-  .nav.navbar-nav.ml-auto class="#{'mr-sm-3' unless current_user.admin?}"
+  - if current_user.admin?
+    button.navbar-toggler.sidebar-toggler.d-md-down-none type="button" 
+      span.navbar-toggler-icon  
+
+  .nav.navbar-nav.ml-auto.mr-2
     = render 'cart/cart' unless current_user.admin?
     li.nav-item.dropdown
       a.nav-link.dropdown-toggle.nav-link aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
@@ -17,5 +21,3 @@ header.app-header.navbar
         = link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do
           i.fa.fa-lock
           | Logout
-  - if current_user.admin?
-    button.navbar-toggler.sidebar-minimizer.d-md-down-none type='button'  ☰
