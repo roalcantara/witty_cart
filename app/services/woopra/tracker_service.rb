@@ -33,6 +33,12 @@ module Woopra
             price: cart_item.total_price.to_f
     end
 
+    def self.track_checkout(cart)
+      track :checkout,
+            quantity: cart.quantity_of_products,
+            price: cart.total_price.to_f
+    end
+
     private_class_method :track
   end
 end
