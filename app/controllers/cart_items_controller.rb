@@ -12,6 +12,7 @@ class CartItemsController < ApplicationController
     if @cart_item.errors.any?
       render 'products/show'
     else
+      Woopra::TrackerService.track_add_to_cart(@cart_item)
       redirect_to products_path, notice: 'An item has been added! YAY!'
     end
   end

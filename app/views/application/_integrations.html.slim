@@ -1,3 +1,6 @@
+= javascript_include_tag 'integrations/woopra', 'data-turbolinks-track': 'reload'
+= javascript_include_tag 'integrations/tracker', 'data-turbolinks-track': 'reload'
+
 javascript:
   var userData = #{ current_user&.to_json&.html_safe || 'null' };
   if(userData) {

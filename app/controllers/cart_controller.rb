@@ -9,6 +9,8 @@ class CartController < ApplicationController
   def checkout
     @cart.items.destroy_all
 
+    Woopra::TrackerService.track_checkout(User.current)
+
     respond_with @cart, location: cart_index_path, notice: 'Fantabolastic Thanks! 🖖🏼'
   end
 

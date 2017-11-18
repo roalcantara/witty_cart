@@ -11,6 +11,12 @@ module WittyCart
     # Use the responders controller from the responders gem
     config.app_generators.scaffold_controller :responders_controller
 
+    # Configure Sidekiq as queue adapter
+    config.active_job.queue_adapter = :sidekiq
+
+    # Custom paths to be loaded
+    config.autoload_paths += %W(#{config.root}/lib/woopra)
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
@@ -20,12 +26,16 @@ module WittyCart
   end
 
   class << self
+    def heroku_host
+      "#{ENV['HEROKU_APP_NAME']}.herokuapp.com" if ENV['HEROKU_APP_NAME'].present?
+    end
+
     def canonical_host
       ENV['CANONICAL_HOST'] || heroku_host || 'localhost:3000'
     end
 
-    def heroku_host
-      "#{ENV['HEROKU_APP_NAME']}.herokuapp.com" if ENV['HEROKU_APP_NAME'].present?
+    def woopra_domain
+      ENV['WOOPRA_DOMAIN'] || heroku_host || 'localhost:3000'
     end
 
     def host
@@ -38,6 +48,14 @@ module WittyCart
 
     def production?
       env == 'production'
+    end
+
+    def staging?
+      env == 'staging'
+    end
+
+    def tracking?
+      production? || staging?
     end
   end
 end

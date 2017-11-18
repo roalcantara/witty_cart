@@ -29,6 +29,3 @@
 //= require env
 //= require cart
 //= require tables
-
-// -- Integrations --
-//= require integrations/woopra

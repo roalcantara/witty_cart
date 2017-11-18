@@ -37,11 +37,15 @@
   "formation": {
     "web": {
       "quantity": 1
+    },
+    "worker": {
+      "quantity": 1
     }
   },
   "addons": [
     "heroku-postgresql",
-    "sendgrid:starter"
+    "sendgrid:starter",
+    "heroku-redis"
   ],
   "buildpacks": [
     {
