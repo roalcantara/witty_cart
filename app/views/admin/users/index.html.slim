@@ -7,6 +7,7 @@
         thead.thead-default
           tr
             th.width-30 #
+            th Name
             th Email
             th Admin
             th.d-none.d-lg-table-cell Created At
@@ -15,6 +16,7 @@
           - @users&.each do |user|
             tr data-href="#{url_for([:admin, user])}"
               td = user.id
+              td = user.name
               td = user.email
               td = user.admin
               td.d-none.d-lg-table-cell = l user.created_at, format: :short

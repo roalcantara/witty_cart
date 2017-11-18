@@ -6,8 +6,13 @@
         h1 Register
         p.text-muted Create your account
         .input-group.mb-2.mr-sm-2.mb-sm-0
+          span.input-group-addon
+            i.icon-emotsmile
+          = f.email_field :name, required: true, autofocus: true, class: "form-control #{error?(resource, :name)}", placeholder: 'Name'
+        = error resource, :name
+        .input-group.mb-2.mr-sm-2.mb-sm-0.mt-3
           span.input-group-addon @
-          = f.email_field :email, required: true, autofocus: true, class: "form-control #{error?(resource, :email)}", placeholder: 'Email'
+          = f.email_field :email, required: true, class: "form-control #{error?(resource, :email)}", placeholder: 'Email'
         = error resource, :email
         .input-group.mb-2.mr-sm-2.mb-sm-0.mt-3
           span.input-group-addon

@@ -8,10 +8,16 @@ class User < ApplicationRecord
 
   has_one :cart, foreign_key: :owner_id
 
+  validates :name, presence: true
+
   after_save :create_cart!, if: -> { cart.nil? }, unless: -> { admin? }
 
   def username
     email.split('@').first
+  end
+
+  def first_name
+    name&.split(' ')&.first || username
   end
 
   private
