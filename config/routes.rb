@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     namespace :admin do
       root 'dashboard#index'
 
+      mount Sidekiq::Web => '/sidekiq'
       resources :dashboard, only: %i(index)
       resources :users, only: %i(index show)
       resources :carts, only: %i(index show)
