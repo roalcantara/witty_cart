@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   after_save :create_cart!, if: -> { cart.nil? }, unless: -> { admin? }
+  after_create :track_sign_up
 
   def username
     email.split('@').first
@@ -24,5 +25,9 @@ class User < ApplicationRecord
 
   def create_cart!
     build_cart.save
+  end
+
+  def track_sign_up
+    Woopra::TrackerService.track_sign_up self
   end
 end

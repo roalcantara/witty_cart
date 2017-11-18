@@ -86,5 +86,17 @@ RSpec.describe User do
         end
       end
     end
+
+    describe 'after create' do
+      describe '#track_sign_up' do
+        let(:user) { build :user }
+
+        it 'tracks the user sign up event' do
+          expect(Woopra::TrackerService).to receive(:track_sign_up).with user
+
+          user.save
+        end
+      end
+    end
   end
 end
