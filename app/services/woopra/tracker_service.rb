@@ -25,6 +25,14 @@ module Woopra
       }, user.id
     end
 
+    def self.track_add_to_cart(cart_item)
+      track :add_to_cart,
+            product_id: cart_item.item.id,
+            product: cart_item.item.name,
+            quantity: cart_item.quantity,
+            price: cart_item.total_price.to_f
+    end
+
     private_class_method :track
   end
 end
