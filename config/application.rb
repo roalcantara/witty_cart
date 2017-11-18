@@ -14,6 +14,9 @@ module WittyCart
     # Configure Sidekiq as queue adapter
     config.active_job.queue_adapter = :sidekiq
 
+    # Custom paths to be loaded
+    config.autoload_paths += %W(#{config.root}/lib/woopra)
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
