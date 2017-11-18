@@ -55,4 +55,16 @@ RSpec.describe Woopra::TrackerService do
                                                              price: cart_item.total_price.to_f
     end
   end
+
+  describe '.track_checkout' do
+    it 'enqueues a Tracker Job' do
+      expect do
+        described_class.track_checkout user
+      end.to have_enqueued_job(Woopra::TrackerJob).once.with configuration,
+                                                             user.id,
+                                                             'checkout',
+                                                             quantity: user.cart.quantity_of_products,
+                                                             price: user.cart.total_price.to_f
+    end
+  end
 end
