@@ -39,6 +39,14 @@ module Woopra
             price: cart.total_price.to_f
     end
 
+    def self.track_remove_from_cart(cart_item)
+      track :remove_from_cart,
+            product_id: cart_item.item.id,
+            product: cart_item.item.name,
+            quantity: cart_item.quantity,
+            price: cart_item.total_price.to_f
+    end
+
     private_class_method :track
   end
 end

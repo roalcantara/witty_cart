@@ -56,6 +56,22 @@ RSpec.describe Woopra::TrackerService do
     end
   end
 
+  describe '.track_remove_from_cart' do
+    let(:cart_item) { create :cart_item }
+
+    it 'enqueues a Tracker Job' do
+      expect do
+        described_class.track_remove_from_cart cart_item
+      end.to have_enqueued_job(Woopra::TrackerJob).once.with configuration,
+                                                             user.id,
+                                                             'remove_from_cart',
+                                                             product_id: cart_item.item.id,
+                                                             product: cart_item.item.name,
+                                                             quantity: cart_item.quantity,
+                                                             price: cart_item.total_price.to_f
+    end
+  end
+
   describe '.track_checkout' do
     let(:cart) { create :cart, owner_id: user.id }
 

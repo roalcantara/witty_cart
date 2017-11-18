@@ -12,13 +12,15 @@ class CartItemsController < ApplicationController
     if @cart_item.errors.any?
       render 'products/show'
     else
-      Woopra::TrackerService.track_add_to_cart(@cart_item)
+      Woopra::TrackerService.track_add_to_cart @cart_item
       redirect_to products_path, notice: 'An item has been added! YAY!'
     end
   end
 
   def destroy
     @cart_item.destroy
+
+    Woopra::TrackerService.track_remove_from_cart @cart_item
 
     redirect_to cart_index_path, notice: 'Item has been removed! :('
   end
