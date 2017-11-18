@@ -10,7 +10,10 @@ RSpec.describe ApplicationController do
       end
     end
 
-    before { expect(controller).to receive(:devise_controller?).and_return true }
+    before do
+      expect(controller).to receive(:devise_controller?).twice.and_return true
+      expect(controller).to receive(:configure_permitted_parameters)
+    end
 
     it 'renders a breadcrumb' do
       get 'index'

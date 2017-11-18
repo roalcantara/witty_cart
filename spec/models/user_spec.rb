@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User do
+  it { expect(User.ancestors).to include Signinable }
+
   describe 'validations' do
+    it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_presence_of :password }
   end
@@ -16,6 +19,28 @@ RSpec.describe User do
     subject! { user.username }
 
     it { is_expected.to eq 'naruto' }
+  end
+
+  describe '#firt_name' do
+    let(:user) { create :user, name: 'Uzimaki Naruto' }
+
+    subject! { user.first_name }
+
+    it { is_expected.to eq 'Uzimaki' }
+
+    context 'when name is nil' do
+      let(:user) { build :user, name: nil }
+
+      it 'returns the username' do
+        is_expected.to eq user.username
+      end
+    end
+
+    context 'when user has no second name' do
+      let(:user) { build :user, name: 'Uzimaki' }
+
+      it { is_expected.to eq 'Uzimaki' }
+    end
   end
 
   describe 'callbacks' do

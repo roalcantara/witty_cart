@@ -11,7 +11,7 @@ header.app-header.navbar
     li.nav-item.dropdown
       a.nav-link.dropdown-toggle.nav-link aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
         = fa_icon 'user-circle 3x', class: 'img-avatar'
-        span.d-md-down-none = current_user.username
+        span.d-md-down-none = current_user.first_name
       .dropdown-menu.dropdown-menu-right
         .dropdown-header.text-center
           strong Account

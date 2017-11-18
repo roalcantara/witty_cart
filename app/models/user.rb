@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Signinable
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,10 +8,16 @@ class User < ApplicationRecord
 
   has_one :cart, foreign_key: :owner_id
 
+  validates :name, presence: true
+
   after_save :create_cart!, if: -> { cart.nil? }, unless: -> { admin? }
 
   def username
     email.split('@').first
+  end
+
+  def first_name
+    name&.split(' ')&.first || username
   end
 
   private
