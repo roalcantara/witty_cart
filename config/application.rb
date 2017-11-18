@@ -49,5 +49,13 @@ module WittyCart
     def production?
       env == 'production'
     end
+
+    def staging?
+      env == 'staging'
+    end
+
+    def tracking?
+      production? || staging?
+    end
   end
 end
