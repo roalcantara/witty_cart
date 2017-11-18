@@ -57,6 +57,8 @@ jobs:
             mkdir ~/rspec
             bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
           when: always
+          environment:
+            WOOPRA_DOMAIN: witty-cart-review.herokuapp.com
 
       # collect reports
       - store_test_results:

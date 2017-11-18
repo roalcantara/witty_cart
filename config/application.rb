@@ -26,12 +26,16 @@ module WittyCart
   end
 
   class << self
+    def heroku_host
+      "#{ENV['HEROKU_APP_NAME']}.herokuapp.com" if ENV['HEROKU_APP_NAME'].present?
+    end
+
     def canonical_host
       ENV['CANONICAL_HOST'] || heroku_host || 'localhost:3000'
     end
 
-    def heroku_host
-      "#{ENV['HEROKU_APP_NAME']}.herokuapp.com" if ENV['HEROKU_APP_NAME'].present?
+    def woopra_domain
+      ENV['WOOPRA_DOMAIN'] || heroku_host || 'localhost:3000'
     end
 
     def host
