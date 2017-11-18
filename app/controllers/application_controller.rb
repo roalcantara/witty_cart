@@ -1,6 +1,7 @@
 require 'application_responder'
 
 class ApplicationController < ActionController::Base
+  include Authenticable
   include Breadcrumbable
 
   before_action :add_breadcrumbs, if: :devise_controller?
