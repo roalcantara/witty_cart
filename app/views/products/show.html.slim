@@ -11,3 +11,5 @@
           dd = @product.created_at
   .col-md-3.offset-md-1
     = render 'cart/form'
+
+= track 'seen_product', { product: @product.name, price: @product.price.to_f }
