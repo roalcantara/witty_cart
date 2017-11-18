@@ -98,5 +98,17 @@ RSpec.describe User do
         end
       end
     end
+
+    describe 'devise' do
+      describe '#after_database_authentication' do
+        let(:user) { create :user }
+
+        it 'tracks the user sign up event' do
+          expect(Woopra::TrackerService).to receive(:track_sign_in).with user
+
+          user.after_database_authentication
+        end
+      end
+    end
   end
 end

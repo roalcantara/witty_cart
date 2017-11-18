@@ -21,6 +21,10 @@ class User < ApplicationRecord
     name&.split(' ')&.first || username
   end
 
+  def after_database_authentication
+    Woopra::TrackerService.track_sign_in self
+  end
+
   private
 
   def create_cart!

@@ -16,6 +16,15 @@ module Woopra
       }, user.id
     end
 
+    def self.track_sign_in(user)
+      track :sign_in, {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        admin: user.admin?
+      }, user.id
+    end
+
     private_class_method :track
   end
 end

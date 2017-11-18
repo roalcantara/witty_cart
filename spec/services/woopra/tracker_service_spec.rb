@@ -25,4 +25,18 @@ RSpec.describe Woopra::TrackerService do
                                                              admin: user.admin?
     end
   end
+
+  describe '.track_sign_in' do
+    it 'enqueues a Tracker Job' do
+      expect do
+        described_class.track_sign_in user
+      end.to have_enqueued_job(Woopra::TrackerJob).once.with configuration,
+                                                             user.id,
+                                                             'sign_in',
+                                                             id: user.id,
+                                                             name: user.name,
+                                                             email: user.email,
+                                                             admin: user.admin?
+    end
+  end
 end
