@@ -3,7 +3,7 @@
 A really Simple Rails 5 Cart App. :)
 
 [![CircleCI](https://circleci.com/gh/roalcantara/witty_cart/tree/master.svg?style=svg)](https://circleci.com/gh/roalcantara/witty_cart/tree/master)
-[![Coverage Status](https://coveralls.io/repos/github/roalcantara/witty_cart/badge.svg?branch=master)](https://coveralls.io/github/roalcantara/witty_cart?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/roalcantara/witty_cart/badge.svg?branch=master)](https://coveralls.io/github/roalcantara/witty_cart?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/roalcantara/witty_cart.svg)](https://greenkeeper.io/)
 
 ## Development
 
